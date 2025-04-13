@@ -1,0 +1,14 @@
+query GetImages($ids: [ID!]!) {
+  nodes(ids: $ids) {
+    ... on MediaImage {
+      __typename
+      id
+      image {
+        url
+        altText
+        width
+        height
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+query GetHomePage {
+  products(first: 10) {
+    edges {
+      node {
+        ...ProductCard
+      }
+    }
+  }
+}
+
+fragment ProductCard on Product {
+  title
+  handle
+  collections(first: 1) {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+  variants(first: 10) {
+    edges {
+      node {
+        ...VariantForProductCard
+      }
+    }
+  }
+}
+
+fragment VariantForProductCard on ProductVariant {
+  id
+  title
+  availableForSale
+  compareAtPrice {
+    ...PriceForProductCard
+  }
+  price {
+    ...PriceForProductCard
+  }
+  image {
+    ...ImageForProductCard
+  }
+  metafields(
+    identifiers: [
+      { key: "variant_color", namespace: "custom" }
+      { key: "secondary_image", namespace: "custom" }
+    ]
+  ) {
+    key
+    value
+  }
+}
+
+fragment PriceForProductCard on MoneyV2 {
+  amount
+  currencyCode
+}
+
+fragment ImageForProductCard on Image {
+  id
+  altText
+  height
+  width
+  url
+}
