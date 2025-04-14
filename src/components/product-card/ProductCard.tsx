@@ -46,7 +46,7 @@ export default function ProductCard({ data }: ProductCardProps): JSX.Element {
     >
       <div className="relative js-variant-switcher-product-sale-label">
         {compareAtPrice > price && (
-          <span className="absolute top-[20px] left-[20px] py-[6px] px-[12px] font-bold border-[1px] border-error rounded-full text-error z-10">
+          <span className="absolute top-[20px] left-[20px] py-[6px] px-[12px] font-bold border-[1px] border-[var(--COLOR-ERROR)] rounded-full text-[var(--COLOR-ERROR)] z-10">
             On Sale!
           </span>
         )}
@@ -63,8 +63,14 @@ export default function ProductCard({ data }: ProductCardProps): JSX.Element {
       />
       <div className="flex gap-[6px] flex-col">
         <p className="text-default text-[14px]">{collectionTitle}</p>
-        <h3 itemProp="name" className=" text-[primary] hover:opacity-80">
-          <a href={href} className="block text-[16px]">
+        <h3
+          itemProp="name"
+          className=" text-[var(--COLOR-PRIMARY)] hover:opacity-80"
+        >
+          <a
+            href={href}
+            className="block text-[16px] text-[var(--COLOR-PRIMARY)]"
+          >
             {productTitle}
           </a>
         </h3>

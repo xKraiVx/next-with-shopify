@@ -13,30 +13,35 @@ export default function ProductCardPrice({
   compareAtPrice,
   currencyCode,
 }: ProductCardPriceProps): JSX.Element {
+  const formattedPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currencyCode,
+  }).format(parseFloat(price));
+
+  const formattedCompareAtPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currencyCode,
+  }).format(parseFloat(compareAtPrice));
+
   return (
-    <div className="product-card__image">
+    <div>
       <p className="text-default">
-        <span
-          className="product-card__price-value"
-          itemProp="offers"
-          itemScope
-          itemType="https://schema.org/Offer"
-        >
+        <span itemProp="offers" itemScope itemType="https://schema.org/Offer">
           <meta itemProp="priceCurrency" content={currencyCode} />
           <span className="flex gap-2 text-[14px]">
             {!isSoldOut ? (
-              <span className="text-error">Sold Out</span>
+              <span className="text-[var(--COLOR-ERROR)]">Sold Out</span>
             ) : compareAtPrice > price ? (
               <>
                 <span className="line-through text-default" itemProp="price">
-                  {compareAtPrice}
+                  {formattedCompareAtPrice}
                 </span>
-                <span className="text-error" itemProp="sale">
-                  {price}
+                <span className="text-[var(--COLOR-ERROR)]" itemProp="sale">
+                  {formattedPrice}
                 </span>
               </>
             ) : (
-              <span itemProp="price">{price}</span>
+              <span itemProp="price">{formattedPrice}</span>
             )}
           </span>
         </span>

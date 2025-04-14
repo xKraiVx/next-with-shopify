@@ -21,7 +21,7 @@ export default function ProductCardVariantSwitcher({
           className={cn(
             "relative inline-flex justify-center items-center h-[24px] w-[24px] rounded-full border-[1px] hover:opacity-80 transition-opacity cursor-pointer",
             {
-              "border-primary": currentVariantId === variant.id,
+              "border-[var(--COLOR-PRIMARY)]": currentVariantId === variant.id,
               "border-transparent": currentVariantId !== variant.id,
             }
           )}

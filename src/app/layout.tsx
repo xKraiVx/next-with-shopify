@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>{children}</body>
+      <body className={`${roboto.variable} antialiased`}>
+        <div className="container mx-auto max-w-[1440px]">{children}</div>
+      </body>
     </html>
   );
 }

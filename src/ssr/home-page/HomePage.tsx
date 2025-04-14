@@ -8,7 +8,7 @@ interface HomePageProps {
 
 export default function HomePage({ data }: HomePageProps): JSX.Element {
   return (
-    <div>
+    <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
       {data.map((product) => (
         <ProductCard key={product.handle} data={product} />
       ))}
